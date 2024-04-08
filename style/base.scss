@@ -39,13 +39,21 @@
 	}
 
 	&.root {
-		width: var(--width, 245px);
+		width: var(--width, 260px);
 		display: flex;
 		flex-direction: column;
 		background: var(--background-color);
+		border-radius: 6px;
+		// padding-bottom: 4px;//var(--padding);
+		overflow-y: auto;
+
 		> .title {
-			background: var(--title-background-color);
+			// background: var(--title-background-color);
+			// background: var(--background-color);
 			color: var(--title-text-color);
+			// border-radius: 6px 6px 0 0;
+			// border: 0 solid var(--widget-color);
+			// border-bottom: 1px solid var(--widget-color)
 		}
 		> .children {
 			overflow-x: hidden;
@@ -65,34 +73,36 @@
 	// "Theme" properties
 	// -------------------------------------------------------------------------
 
-	--background-color: #1f1f1f;
-	--text-color: #ebebeb;
-	--title-background-color: #111111;
-	--title-text-color: #ebebeb;
-	--widget-color: #424242;
+	--background-color: #2d2d2d; // #252525 //#1f1f1f;
+	--text-color: #BFBFBF;
+	--title-background-color: #c5c5c5; // #111111;
+	--title-text-color: #f0f0f0;
+	--widget-color: #444444;//#424242;
 	--hover-color: #4f4f4f;
 	--focus-color: #595959;
 	--number-color: #2cc9ff;
 	--string-color: #a2db3c;
-	--font-size: 11px;
-	--input-font-size: 11px;
+	--title-font-size: 12px;
+	--font-size: 10px;
+	--input-font-size: 10px;
 	--font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 	--font-family-mono: Menlo, Monaco, Consolas, 'Droid Sans Mono', monospace;
-	--padding: 4px;
-	--spacing: 4px;
+	--padding: 8px;
+	--spacing: 6px;
 	--widget-height: 20px;
-	--title-height: calc(var(--widget-height) + var(--spacing) * 1.25);
-	--name-width: 45%;
-	--slider-knob-width: 2px;
+	--title-height: calc(var(--widget-height) + var(--spacing) * 2.0);
+	--name-width: 40%;
+	--slider-knob-width: 8px;
 	--slider-input-width: 27%;
 	--color-input-width: 27%;
 	--slider-input-min-width: 45px;
 	--color-input-min-width: 45px;
-	--folder-indent: 7px;
-	--widget-padding: 0 0 0 3px;
-	--widget-border-radius: 2px;
-	--checkbox-size: calc(0.75 * var(--widget-height));
-	--scrollbar-width: 5px;
+	--folder-indent: 4px;
+	// --widget-padding: 0 0 0 3px;
+	--widget-padding: 0 0 0 4px;
+	--widget-border-radius: 5px;
+	--checkbox-size: calc(0.8 * var(--widget-height));
+	--scrollbar-width: 6px;
 
 	@include touch-vars {
 		--widget-height: 28px;

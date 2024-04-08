@@ -4,7 +4,7 @@
 	.controller {
 		display: flex;
 		align-items: center;
-		padding: 0 var(--padding);
+		padding: 0 calc(var(--padding) - var(--folder-indent) + 12px); // account with down arrow 
 		margin: var(--spacing) 0;
 
 		&.disabled {
@@ -44,7 +44,7 @@
 	.controller.color {
 		.display {
 			width: 100%;
-			height: var(--widget-height);
+			height: calc(var(--widget-height) * 0.85);
 			border-radius: var(--widget-border-radius);
 			position: relative;
 			@include on-hover {
@@ -68,6 +68,7 @@
 			cursor: pointer;
 		}
 		input[type='text'] {
+			color: var(--title-text-color);
 			margin-left: var(--spacing);
 			font-family: var(--font-family-mono);
 			min-width: var(--color-input-min-width);
@@ -89,6 +90,7 @@
 			border-radius: var(--widget-border-radius);
 			height: var(--widget-height);
 			line-height: var(--widget-height);
+			width: 100%;
 			max-width: 100%;
 			overflow: hidden;
 			word-break: break-all;
@@ -96,6 +98,7 @@
 			padding-right: 1.75em;
 
 			background: var(--widget-color);
+			color: var(--title-text-color);
 
 			@include can-hover {
 				&.focus {
@@ -142,9 +145,10 @@
 		}
 		.slider {
 			width: 100%;
-			height: var(--widget-height);
+			// height: var(--widget-height);
+			height: 8px;//calc(var(--widget-height) * 0.45);
 			background: var(--widget-color);
-			border-radius: var(--widget-border-radius);
+			border-radius: calc(var(--widget-border-radius) * 0.9);
 
 			// subtracts width of knob from available width
 			padding-right: var(--slider-knob-width);
@@ -167,6 +171,9 @@
 		.fill {
 			height: 100%;
 			border-right: var(--slider-knob-width) solid var(--number-color);
+			background-color: var(--number-color);
+			border-radius: var(--widget-border-radius);
+
 			// don't count border width towards width
 			box-sizing: content-box;
 		}
