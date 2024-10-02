@@ -42,16 +42,34 @@ export default class NumberController extends Controller {
 		return this;
 	}
 
+	zeroCentered( centered = true ) {
+		this._zeroCentered = centered;
+		this.updateDisplay();
+		return this;
+	}
+
 	updateDisplay() {
 
 		const value = this.getValue();
 
 		if ( this._hasSlider ) {
+			if ( this._zeroCentered ) {
+				const zeroPoint = - this._min / ( this._max - this._min );
+				let percent = ( value - this._min ) / ( this._max - this._min );
+				percent = Math.max( 0, Math.min( percent, 1 ) );
 
-			let percent = ( value - this._min ) / ( this._max - this._min );
-			percent = Math.max( 0, Math.min( percent, 1 ) );
-
-			this.$fill.style.width = percent * 100 + '%';
+				if ( percent > zeroPoint ) {
+					this.$fill.style.marginLeft = zeroPoint * 100 + '%';
+					this.$fill.style.width = ( percent - zeroPoint ) * 100 + '%';
+				} else {
+					this.$fill.style.marginLeft = percent * 100 + '%';
+					this.$fill.style.width = ( zeroPoint - percent ) * 100 + '%';
+				}
+			} else {
+				let percent = ( value - this._min ) / ( this._max - this._min );
+				percent = Math.max( 0, Math.min( percent, 1 ) );
+				this.$fill.style.width = percent * 100 + '%';
+			}
 
 		}
 
@@ -242,6 +260,7 @@ export default class NumberController extends Controller {
 	_initSlider() {
 
 		this._hasSlider = true;
+		this._zeroCentered = false;
 
 		// Build DOM
 		// ---------------------------------------------------------------------
